@@ -1,0 +1,21 @@
+{
+    "workspace": {
+      "view": "readme",
+      "files": [
+          "recipes.py"
+      ],
+      "terminals": [
+          {
+            "name": "Terminal",
+            "active": false
+          },
+          {
+            "name": "Python REPL",
+            "active": true,
+            "command": "python3",
+            "icon": "python"
+          }
+      ],
+      "browser": "https://localhost"
+    }
+  }
