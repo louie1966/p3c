@@ -5,19 +5,30 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/": {
-      "post": {
-        "summary": "Create Item",
-        "operationId": "create_item_items__post",
+    "/items/{item_id}": {
+      "put": {
+        "summary": "Update Item",
+        "operationId": "update_item_items__item_id__put",
+        "parameters": [
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Item Id"
+            }
+          }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/Item"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
