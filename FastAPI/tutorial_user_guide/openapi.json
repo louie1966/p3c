@@ -15,6 +15,7 @@
             "in": "path",
             "required": true,
             "schema": {
+              "type": "integer",
               "title": "Item Id"
             }
           }
@@ -24,8 +25,8 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-
+                "schema": {         
+                           
                 }
               }
             }
