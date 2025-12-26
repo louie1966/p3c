@@ -5,20 +5,11 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/users/{user_id}/items/{item_id}": {
+    "/items/{item_id}": {
       "get": {
         "summary": "Read User Item",
-        "operationId": "read_user_item_users__user_id__items__item_id__get",
+        "operationId": "read_user_item_items__item_id__get",
         "parameters": [
-          {
-            "name": "user_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "User Id"
-            }
-          },
           {
             "name": "item_id",
             "in": "path",
@@ -29,29 +20,12 @@
             }
           },
           {
-            "name": "q",
+            "name": "needy",
             "in": "query",
-            "required": false,
+            "required": true,
             "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Q"
-            }
-          },
-          {
-            "name": "short",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "default": false,
-              "title": "Short"
+              "type": "string",
+              "title": "Needy"
             }
           }
         ],
@@ -60,9 +34,7 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-
-                }
+                "schema": {}
               }
             }
           },
