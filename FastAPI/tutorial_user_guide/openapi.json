@@ -5,18 +5,36 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/{item_id}": {
+    "/users/me": {
       "get": {
-        "summary": "Read Item",
-        "operationId": "read_item_items__item_id__get",
+        "summary": "Read User Me",
+        "operationId": "read_user_me_users_me_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "summary": "Read User",
+        "operationId": "read_user_users__user_id__get",
         "parameters": [
           {
-            "name": "item_id",
+            "name": "user_id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
-              "title": "Item Id"
+              "type": "string",
+              "title": "User Id"
             }
           }
         ],
@@ -25,8 +43,8 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {         
-                           
+                "schema": {
+
                 }
               }
             }
