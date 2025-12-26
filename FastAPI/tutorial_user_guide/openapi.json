@@ -5,11 +5,20 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/{item_id}": {
+    "/users/{user_id}/items/{item_id}": {
       "get": {
-        "summary": "Read Item",
-        "operationId": "read_item_items__item_id__get",
+        "summary": "Read User Item",
+        "operationId": "read_user_item_users__user_id__items__item_id__get",
         "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "User Id"
+            }
+          },
           {
             "name": "item_id",
             "in": "path",
