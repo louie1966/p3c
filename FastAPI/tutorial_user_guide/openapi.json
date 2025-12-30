@@ -11,23 +11,20 @@
         "operationId": "read_items_items__get",
         "parameters": [
           {
-            "name": "q",
+            "name": "item-query",
             "in": "query",
             "required": false,
             "schema": {
               "anyOf": [
                 {
-                  "type": "string",
-                  "minLength": 3
+                  "type": "string"
                 },
                 {
                   "type": "null"
                 }
               ],
-              "title": "Query string",
-              "description": "Query string for the items to search in the database that have a good match"
-            },
-            "description": "Query string for the items to search in the database that have a good match"
+              "title": "Item-Query"
+            }
           }
         ],
         "responses": {
