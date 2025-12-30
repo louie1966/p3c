@@ -5,13 +5,22 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/": {
+    "/items/{item_id}": {
       "get": {
         "summary": "Read Items",
-        "operationId": "read_items_items__get",
+        "operationId": "read_items_items__item_id__get",
         "parameters": [
           {
-            "name": "id",
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "The ID of the item to get"
+            }
+          },
+          {
+            "name": "item-query",
             "in": "query",
             "required": false,
             "schema": {
@@ -23,7 +32,7 @@
                   "type": "null"
                 }
               ],
-              "title": "Id"
+              "title": "Item-Query"
             }
           }
         ],
