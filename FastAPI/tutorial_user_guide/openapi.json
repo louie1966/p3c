@@ -13,11 +13,10 @@
           {
             "name": "q",
             "in": "query",
-            "required": false,
+            "required": true,
             "schema": {
               "type": "string",
               "minLength": 3,
-              "default": "fixedquery",
               "title": "Q"
             }
           }
