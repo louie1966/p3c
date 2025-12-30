@@ -17,14 +17,21 @@
             "schema": {
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 50,
+                  "pattern": "^fixedquery$"
                 },
                 {
                   "type": "null"
                 }
               ],
-              "title": "Item-Query"
-            }
+              "title": "Query string",
+              "description": "Query string for the items to search in the database that have a good match",
+              "deprecated": true
+            },
+            "description": "Query string for the items to search in the database that have a good match",
+            "deprecated": true
           }
         ],
         "responses": {
