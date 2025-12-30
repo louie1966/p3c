@@ -9,31 +9,6 @@
       "get": {
         "summary": "Read Items",
         "operationId": "read_items_items__get",
-        "parameters": [
-          {
-            "name": "item-query",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "minLength": 3,
-                  "maxLength": 50,
-                  "pattern": "^fixedquery$"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Query string",
-              "description": "Query string for the items to search in the database that have a good match",
-              "deprecated": true
-            },
-            "description": "Query string for the items to search in the database that have a good match",
-            "deprecated": true
-          }
-        ],
         "responses": {
           "200": {
             "description": "Successful Response",
