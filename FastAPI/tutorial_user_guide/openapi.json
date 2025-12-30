@@ -15,16 +15,13 @@
             "in": "query",
             "required": false,
             "schema": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                {
-                  "type": "null"
-                }
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [
+                "foo",
+                "bar"
               ],
               "title": "Q"
             }
