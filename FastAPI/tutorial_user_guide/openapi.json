@@ -16,13 +16,8 @@
             "required": false,
             "schema": {
               "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "default": [
-                "foo",
-                "bar"
-              ],
+              "items": {},
+              "default": [],
               "title": "Q"
             }
           }
