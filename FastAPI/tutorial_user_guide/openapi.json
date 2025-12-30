@@ -15,17 +15,9 @@
             "in": "query",
             "required": false,
             "schema": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "minLength": 3,
-                  "maxLength": 50,
-                  "pattern": "^fixedquery$"
-                },
-                {
-                  "type": "null"
-                }
-              ],
+              "type": "string",
+              "minLength": 3,
+              "default": "fixedquery",
               "title": "Q"
             }
           }
