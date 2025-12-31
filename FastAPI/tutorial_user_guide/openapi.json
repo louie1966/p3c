@@ -62,12 +62,17 @@
           },
           "user": {
             "$ref": "#/components/schemas/User"
+          },
+          "importance": {
+            "type": "integer",
+            "title": "Importance"
           }
         },
         "type": "object",
         "required": [
           "item",
-          "user"
+          "user",
+          "importance"
         ],
         "title": "Body_update_item_items__item_id__put"
       },
