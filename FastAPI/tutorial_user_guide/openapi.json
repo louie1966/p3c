@@ -17,7 +17,7 @@
             "schema": {
               "type": "integer",
               "maximum": 1000,
-              "exclusiveMinimum": 0,
+              "minimum": 0,
               "title": "The ID of the item to get"
             }
           },
@@ -28,6 +28,17 @@
             "schema": {
               "type": "string",
               "title": "Q"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "exclusiveMaximum": 10.5,
+              "exclusiveMinimum": 0,
+              "title": "Size"
             }
           }
         ],
