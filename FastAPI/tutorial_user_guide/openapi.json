@@ -20,19 +20,12 @@
             }
           },
           {
-            "name": "item-query",
+            "name": "q",
             "in": "query",
-            "required": false,
+            "required": true,
             "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Item-Query"
+              "type": "string",
+              "title": "Q"
             }
           }
         ],
