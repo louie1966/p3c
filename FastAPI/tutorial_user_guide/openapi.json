@@ -5,40 +5,59 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/{item_id}": {
+    "/items/": {
       "get": {
         "summary": "Read Items",
-        "operationId": "read_items_items__item_id__get",
+        "operationId": "read_items_items__get",
         "parameters": [
           {
-            "name": "item_id",
-            "in": "path",
-            "required": true,
+            "name": "limit",
+            "in": "query",
+            "required": false,
             "schema": {
               "type": "integer",
-              "maximum": 1000,
-              "minimum": 0,
-              "title": "The ID of the item to get"
-            }
-          },
-          {
-            "name": "q",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Q"
-            }
-          },
-          {
-            "name": "size",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "number",
-              "exclusiveMaximum": 10.5,
+              "maximum": 100,
               "exclusiveMinimum": 0,
-              "title": "Size"
+              "default": 100,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "created_at",
+                "updated_at"
+              ],
+              "type": "string",
+              "default": "created_at",
+              "title": "Order By"
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [],
+              "title": "Tags"
             }
           }
         ],
