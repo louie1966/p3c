@@ -18,22 +18,6 @@
               "type": "integer",
               "title": "Item Id"
             }
-          },
-          {
-            "name": "q",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Q"
-            }
           }
         ],
         "requestBody": {
@@ -75,21 +59,11 @@
         "properties": {
           "item": {
             "$ref": "#/components/schemas/Item"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "importance": {
-            "type": "integer",
-            "exclusiveMinimum": 0.0,
-            "title": "Importance"
           }
         },
         "type": "object",
         "required": [
-          "item",
-          "user",
-          "importance"
+          "item"
         ],
         "title": "Body_update_item_items__item_id__put"
       },
@@ -145,30 +119,6 @@
           "price"
         ],
         "title": "Item"
-      },
-      "User": {
-        "properties": {
-          "username": {
-            "type": "string",
-            "title": "Username"
-          },
-          "full_name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Full Name"
-          }
-        },
-        "type": "object",
-        "required": [
-          "username"
-        ],
-        "title": "User"
       },
       "ValidationError": {
         "properties": {
