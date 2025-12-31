@@ -16,41 +16,16 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "maximum": 1000,
-              "minimum": 0,
-              "title": "The ID of the item to get"
-            }
-          },
-          {
-            "name": "q",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Q"
+              "title": "Item Id"
             }
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "anyOf": [
-                  {
-                    "$ref": "#/components/schemas/Item"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ],
-                "title": "Item"
+                "$ref": "#/components/schemas/Body_update_item_items__item_id__put"
               }
             }
           }
@@ -80,6 +55,22 @@
   },
   "components": {
     "schemas": {
+      "Body_update_item_items__item_id__put": {
+        "properties": {
+          "item": {
+            "$ref": "#/components/schemas/Item"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object",
+        "required": [
+          "item",
+          "user"
+        ],
+        "title": "Body_update_item_items__item_id__put"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -132,6 +123,30 @@
           "price"
         ],
         "title": "Item"
+      },
+      "User": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "full_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Full Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username"
+        ],
+        "title": "User"
       },
       "ValidationError": {
         "properties": {
