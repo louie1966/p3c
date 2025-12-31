@@ -16,6 +16,7 @@
             "required": true,
             "schema": {
               "type": "integer",
+              "minimum": 1,
               "title": "The ID of the item to get"
             }
           },
