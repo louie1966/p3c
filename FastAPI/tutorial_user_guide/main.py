@@ -1,30 +1,20 @@
-import random
-from typing import Annotated
+from typing import Annotated, Literal
 
-from fastapi import FastAPI
-from pydantic import AfterValidator
+from fastapi import FastAPI, Query
+from pydantic import BaseModel, Field
 
 app = FastAPI()
 
-data = {
-    "isbn-9781529046137": "The Hitchhiker's Guide to the Galaxy",
-    "imdb-tt0371724": "The Hitchhiker's Guide to the Galaxy",
-    "isbn-9781439512982": "Isaac Asimov: The Complete Stories, Vol. 2",
-}
 
+class FilterParams(BaseModel):
+    model_config = {"extra": "forbid"}
 
-def check_valid_id(id: str):
-    if not id.startswith(("isbn-", "imdb-")):
-        raise ValueError('Invalid ID format, it must start with "isbn-" or "imdb-"')
-    return id
+    limit: int = Field(100, gt=0, le=100)
+    offset: int = Field(0, ge=0)
+    order_by: Literal["created_at", "updated_at"] = "created_at"
+    tags: list[str] = []
 
 
 @app.get("/items/")
-async def read_items(
-    id: Annotated[str | None, AfterValidator(check_valid_id)] = None,
-):
-    if id:
-        item = data.get(id)
-    else:
-        id, item = random.choice(list(data.items()))
-    return {"id": id, "name": item}
+async def read_items(filter_query: Annotated[FilterParams, Query()]):
+    return filter_query
