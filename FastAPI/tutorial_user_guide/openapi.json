@@ -6,76 +6,22 @@
   },
   "paths": {
     "/items/": {
-      "get": {
-        "summary": "Read Items",
-        "operationId": "read_items_items__get",
+      "post": {
+        "summary": "Create Item",
+        "operationId": "create_item_items__post",
         "parameters": [
           {
-            "name": "host",
-            "in": "header",
+            "name": "name",
+            "in": "query",
             "required": true,
             "schema": {
               "type": "string",
-              "title": "Host"
-            }
-          },
-          {
-            "name": "save-data",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "boolean",
-              "title": "Save Data"
-            }
-          },
-          {
-            "name": "if-modified-since",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "If Modified Since"
-            }
-          },
-          {
-            "name": "traceparent",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Traceparent"
-            }
-          },
-          {
-            "name": "x-tag",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "default": [],
-              "title": "X Tag"
+              "title": "Name"
             }
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "description": "Successful Response",
             "content": {
               "application/json": {
