@@ -1,10 +1,17 @@
 from typing import Annotated
 
-from fastapi import FastAPI, Header
+from fastapi import Cookie, FastAPI
+from pydantic import BaseModel
 
 app = FastAPI()
 
 
+class Cookies(BaseModel):
+    session_id: str
+    fatebook_tracker: str | None = None
+    googall_tracker: str | None = None
+
+
 @app.get("/items/")
-async def read_items(x_token: Annotated[list[str] | None, Header()] = None):
-    return {"X-Token values": x_token}
+async def read_items(cookies: Annotated[Cookies, Cookie()]):
+    return cookies

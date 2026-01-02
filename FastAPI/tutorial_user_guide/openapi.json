@@ -11,22 +11,44 @@
         "operationId": "read_items_items__get",
         "parameters": [
           {
-            "name": "x-token",
-            "in": "header",
+            "name": "session_id",
+            "in": "cookie",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "fatebook_tracker",
+            "in": "cookie",
             "required": false,
             "schema": {
               "anyOf": [
                 {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "type": "string"
                 },
                 {
                   "type": "null"
                 }
               ],
-              "title": "X-Token"
+              "title": "Fatebook Tracker"
+            }
+          },
+          {
+            "name": "googall_tracker",
+            "in": "cookie",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Googall Tracker"
             }
           }
         ],
