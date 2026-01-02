@@ -68,6 +68,24 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
+      "Image": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "url",
+          "name"
+        ],
+        "title": "Image"
+      },
       "Item": {
         "properties": {
           "name": {
@@ -108,6 +126,16 @@
             "uniqueItems": true,
             "title": "Tags",
             "default": []
+          },
+          "image": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Image"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
