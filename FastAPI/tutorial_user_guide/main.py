@@ -1,10 +1,17 @@
 from typing import Annotated
 
-from fastapi import FastAPI, Header
+from fastapi import FastAPI, Form
+from pydantic import BaseModel
 
 app = FastAPI()
 
 
-@app.get("/items/")
-async def read_items(x_token: Annotated[list[str] | None, Header()] = None):
-    return {"X-Token values": x_token}
+class FormData(BaseModel):
+    username: str
+    password: str
+    model_config = {"extra": "forbid"}
+
+
+@app.post("/login/")
+async def login(data: Annotated[FormData, Form()]):
+    return data

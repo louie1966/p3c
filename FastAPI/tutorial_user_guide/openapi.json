@@ -5,31 +5,20 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/": {
-      "get": {
-        "summary": "Read Items",
-        "operationId": "read_items_items__get",
-        "parameters": [
-          {
-            "name": "x-token",
-            "in": "header",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "X-Token"
+    "/login/": {
+      "post": {
+        "summary": "Login",
+        "operationId": "login_login__post",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/FormData"
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -55,6 +44,25 @@
   },
   "components": {
     "schemas": {
+      "FormData": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "username",
+          "password"
+        ],
+        "title": "FormData"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
