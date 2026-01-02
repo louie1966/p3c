@@ -11,8 +11,8 @@
         "operationId": "read_items_items__get",
         "parameters": [
           {
-            "name": "ads_id",
-            "in": "cookie",
+            "name": "user-agent",
+            "in": "header",
             "required": false,
             "schema": {
               "anyOf": [
@@ -23,7 +23,7 @@
                   "type": "null"
                 }
               ],
-              "title": "Ads Id"
+              "title": "User-Agent"
             }
           }
         ],
