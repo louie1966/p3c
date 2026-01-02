@@ -5,15 +5,19 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/offers/": {
+    "/images/multiple/": {
       "post": {
-        "summary": "Create Offer",
-        "operationId": "create_offer_offers__post",
+        "summary": "Create Multiple Images",
+        "operationId": "create_multiple_images_images_multiple__post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Offer"
+                "items": {
+                  "$ref": "#/components/schemas/Image"
+                },
+                "type": "array",
+                "title": "Images"
               }
             }
           },
@@ -77,106 +81,6 @@
           "name"
         ],
         "title": "Image"
-      },
-      "Item": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description"
-          },
-          "price": {
-            "type": "number",
-            "title": "Price"
-          },
-          "tax": {
-            "anyOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Tax"
-          },
-          "tags": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "uniqueItems": true,
-            "title": "Tags",
-            "default": []
-          },
-          "images": {
-            "anyOf": [
-              {
-                "items": {
-                  "$ref": "#/components/schemas/Image"
-                },
-                "type": "array"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Images"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "price"
-        ],
-        "title": "Item"
-      },
-      "Offer": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description"
-          },
-          "price": {
-            "type": "number",
-            "title": "Price"
-          },
-          "items": {
-            "items": {
-              "$ref": "#/components/schemas/Item"
-            },
-            "type": "array",
-            "title": "Items"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "price",
-          "items"
-        ],
-        "title": "Offer"
       },
       "ValidationError": {
         "properties": {
