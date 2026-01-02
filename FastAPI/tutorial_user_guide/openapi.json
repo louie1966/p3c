@@ -11,17 +11,26 @@
         "operationId": "read_items_items__get",
         "parameters": [
           {
-            "name": "session_id",
-            "in": "cookie",
+            "name": "host",
+            "in": "header",
             "required": true,
             "schema": {
               "type": "string",
-              "title": "Session Id"
+              "title": "Host"
             }
           },
           {
-            "name": "fatebook_tracker",
-            "in": "cookie",
+            "name": "save-data",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "boolean",
+              "title": "Save Data"
+            }
+          },
+          {
+            "name": "if-modified-since",
+            "in": "header",
             "required": false,
             "schema": {
               "anyOf": [
@@ -32,12 +41,12 @@
                   "type": "null"
                 }
               ],
-              "title": "Fatebook Tracker"
+              "title": "If Modified Since"
             }
           },
           {
-            "name": "googall_tracker",
-            "in": "cookie",
+            "name": "traceparent",
+            "in": "header",
             "required": false,
             "schema": {
               "anyOf": [
@@ -48,7 +57,20 @@
                   "type": "null"
                 }
               ],
-              "title": "Googall Tracker"
+              "title": "Traceparent"
+            }
+          },
+          {
+            "name": "x-tag",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [],
+              "title": "X Tag"
             }
           }
         ],
