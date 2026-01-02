@@ -18,7 +18,13 @@ class Item(BaseModel):
     images: list[Image] | None = None
 
 
-@app.put("/items/{item_id}")
-async def update_item(item_id: int, item: Item):
-    results = {"item_id": item_id, "item": item}
-    return results
+class Offer(BaseModel):
+    name: str
+    description: str | None = None
+    price: float
+    items: list[Item]
+
+
+@app.post("/offers/")
+async def create_offer(offer: Offer):
+    return offer

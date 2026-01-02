@@ -5,30 +5,19 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/{item_id}": {
-      "put": {
-        "summary": "Update Item",
-        "operationId": "update_item_items__item_id__put",
-        "parameters": [
-          {
-            "name": "item_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Item Id"
-            }
-          }
-        ],
+    "/offers/": {
+      "post": {
+        "summary": "Create Offer",
+        "operationId": "create_offer_offers__post",
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Item"
+                "$ref": "#/components/schemas/Offer"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -151,6 +140,43 @@
           "price"
         ],
         "title": "Item"
+      },
+      "Offer": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "price": {
+            "type": "number",
+            "title": "Price"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "price",
+          "items"
+        ],
+        "title": "Offer"
       },
       "ValidationError": {
         "properties": {
