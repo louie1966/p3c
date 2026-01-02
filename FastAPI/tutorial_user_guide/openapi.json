@@ -7,13 +7,13 @@
   "paths": {
     "/files/": {
       "post": {
-        "summary": "Create File",
-        "operationId": "create_file_files__post",
+        "summary": "Create Files",
+        "operationId": "create_files_files__post",
         "requestBody": {
           "content": {
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Body_create_file_files__post"
+                "$ref": "#/components/schemas/Body_create_files_files__post"
               }
             }
           },
@@ -41,15 +41,15 @@
         }
       }
     },
-    "/uploadfile/": {
+    "/uploadfiles/": {
       "post": {
-        "summary": "Create Upload File",
-        "operationId": "create_upload_file_uploadfile__post",
+        "summary": "Create Upload Files",
+        "operationId": "create_upload_files_uploadfiles__post",
         "requestBody": {
           "content": {
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Body_create_upload_file_uploadfile__post"
+                "$ref": "#/components/schemas/Body_create_upload_files_uploadfiles__post"
               }
             }
           },
@@ -76,39 +76,59 @@
           }
         }
       }
+    },
+    "/": {
+      "get": {
+        "summary": "Main",
+        "operationId": "main__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "Body_create_file_files__post": {
+      "Body_create_files_files__post": {
         "properties": {
-          "file": {
-            "type": "string",
-            "format": "binary",
-            "title": "File",
-            "description": "A file read as bytes"
+          "files": {
+            "items": {
+              "type": "string",
+              "format": "binary"
+            },
+            "type": "array",
+            "title": "Files"
           }
         },
         "type": "object",
         "required": [
-          "file"
+          "files"
         ],
-        "title": "Body_create_file_files__post"
+        "title": "Body_create_files_files__post"
       },
-      "Body_create_upload_file_uploadfile__post": {
+      "Body_create_upload_files_uploadfiles__post": {
         "properties": {
-          "file": {
-            "type": "string",
-            "format": "binary",
-            "title": "File",
-            "description": "A file read as UploadFile"
+          "files": {
+            "items": {
+              "type": "string",
+              "format": "binary"
+            },
+            "type": "array",
+            "title": "Files"
           }
         },
         "type": "object",
         "required": [
-          "file"
+          "files"
         ],
-        "title": "Body_create_upload_file_uploadfile__post"
+        "title": "Body_create_upload_files_uploadfiles__post"
       },
       "HTTPValidationError": {
         "properties": {
