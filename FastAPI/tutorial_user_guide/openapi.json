@@ -5,20 +5,21 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/files/": {
-      "post": {
-        "summary": "Create File",
-        "operationId": "create_file_files__post",
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "$ref": "#/components/schemas/Body_create_file_files__post"
-              }
+    "/items/{item_id}": {
+      "get": {
+        "summary": "Read Item",
+        "operationId": "read_item_items__item_id__get",
+        "parameters": [
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Item Id"
             }
-          },
-          "required": true
-        },
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -44,31 +45,6 @@
   },
   "components": {
     "schemas": {
-      "Body_create_file_files__post": {
-        "properties": {
-          "file": {
-            "type": "string",
-            "format": "binary",
-            "title": "File"
-          },
-          "fileb": {
-            "type": "string",
-            "format": "binary",
-            "title": "Fileb"
-          },
-          "token": {
-            "type": "string",
-            "title": "Token"
-          }
-        },
-        "type": "object",
-        "required": [
-          "file",
-          "fileb",
-          "token"
-        ],
-        "title": "Body_create_file_files__post"
-      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
