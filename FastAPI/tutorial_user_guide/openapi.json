@@ -13,7 +13,7 @@
           "content": {
             "application/x-www-form-urlencoded": {
               "schema": {
-                "$ref": "#/components/schemas/Body_login_login__post"
+                "$ref": "#/components/schemas/FormData"
               }
             }
           },
@@ -44,7 +44,7 @@
   },
   "components": {
     "schemas": {
-      "Body_login_login__post": {
+      "FormData": {
         "properties": {
           "username": {
             "type": "string",
@@ -60,7 +60,7 @@
           "username",
           "password"
         ],
-        "title": "Body_login_login__post"
+        "title": "FormData"
       },
       "HTTPValidationError": {
         "properties": {
