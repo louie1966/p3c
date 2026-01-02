@@ -72,7 +72,10 @@
         "properties": {
           "name": {
             "type": "string",
-            "title": "Name"
+            "title": "Name",
+            "examples": [
+              "Foo"
+            ]
           },
           "description": {
             "anyOf": [
@@ -83,11 +86,17 @@
                 "type": "null"
               }
             ],
-            "title": "Description"
+            "title": "Description",
+            "examples": [
+              "A very nice Item"
+            ]
           },
           "price": {
             "type": "number",
-            "title": "Price"
+            "title": "Price",
+            "examples": [
+              35.4
+            ]
           },
           "tax": {
             "anyOf": [
@@ -98,7 +107,10 @@
                 "type": "null"
               }
             ],
-            "title": "Tax"
+            "title": "Tax",
+            "examples": [
+              3.2
+            ]
           }
         },
         "type": "object",
@@ -106,15 +118,7 @@
           "name",
           "price"
         ],
-        "title": "Item",
-        "examples": [
-          {
-            "description": "A very nice Item",
-            "name": "Foo",
-            "price": 35.4,
-            "tax": 3.2
-          }
-        ]
+        "title": "Item"
       },
       "ValidationError": {
         "properties": {
