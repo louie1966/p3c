@@ -101,7 +101,9 @@
             "title": "Tax"
           },
           "tags": {
-            "items": {},
+            "items": {
+              "type": "string"
+            },
             "type": "array",
             "title": "Tags",
             "default": []
