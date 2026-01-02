@@ -11,7 +11,7 @@
         "operationId": "read_items_items__get",
         "parameters": [
           {
-            "name": "user-agent",
+            "name": "strange_header",
             "in": "header",
             "required": false,
             "schema": {
@@ -23,7 +23,7 @@
                   "type": "null"
                 }
               ],
-              "title": "User-Agent"
+              "title": "Strange Header"
             }
           }
         ],
