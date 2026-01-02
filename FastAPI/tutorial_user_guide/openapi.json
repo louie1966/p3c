@@ -5,18 +5,18 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/unicorns/{name}": {
+    "/items/{item_id}": {
       "get": {
-        "summary": "Read Unicorn",
-        "operationId": "read_unicorn_unicorns__name__get",
+        "summary": "Read Item",
+        "operationId": "read_item_items__item_id__get",
         "parameters": [
           {
-            "name": "name",
+            "name": "item_id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "title": "Name"
+              "type": "integer",
+              "title": "Item Id"
             }
           }
         ],
