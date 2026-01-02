@@ -5,24 +5,31 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/index-weights/": {
-      "post": {
-        "summary": "Create Index Weights",
-        "operationId": "create_index_weights_index_weights__post",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "additionalProperties": {
-                  "type": "number"
+    "/items/": {
+      "get": {
+        "summary": "Read Items",
+        "operationId": "read_items_items__get",
+        "parameters": [
+          {
+            "name": "x-token",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
-                "type": "object",
-                "title": "Weights"
-              }
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Token"
             }
-          },
-          "required": true
-        },
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
