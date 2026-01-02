@@ -7,15 +7,16 @@
   "paths": {
     "/items/{item_id}": {
       "put": {
-        "summary": "Update Item",
-        "operationId": "update_item_items__item_id__put",
+        "summary": "Read Items",
+        "operationId": "read_items_items__item_id__put",
         "parameters": [
           {
             "name": "item_id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer",
+              "type": "string",
+              "format": "uuid",
               "title": "Item Id"
             }
           }
@@ -25,34 +26,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Item"
-              },
-              "examples": {
-                "normal": {
-                  "summary": "A normal example",
-                  "description": "A **normal** item works correctly.",
-                  "value": {
-                    "name": "Foo",
-                    "description": "A very nice Item",
-                    "price": 35.4,
-                    "tax": 3.2
-                  }
-                },
-                "converted": {
-                  "summary": "An example with converted data",
-                  "description": "FastAPI can convert price `strings` to actual `numbers` automatically",
-                  "value": {
-                    "name": "Bar",
-                    "price": "35.4"
-                  }
-                },
-                "invalid": {
-                  "summary": "Invalid data is rejected with an error",
-                  "value": {
-                    "name": "Baz",
-                    "price": "thirty five point four"
-                  }
-                }
+                "$ref": "#/components/schemas/Body_read_items_items__item_id__put"
               }
             }
           }
@@ -82,6 +56,44 @@
   },
   "components": {
     "schemas": {
+      "Body_read_items_items__item_id__put": {
+        "properties": {
+          "start_datetime": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Start Datetime"
+          },
+          "end_datetime": {
+            "type": "string",
+            "format": "date-time",
+            "title": "End Datetime"
+          },
+          "process_after": {
+            "type": "string",
+            "format": "duration",
+            "title": "Process After"
+          },
+          "repeat_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Repeat At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "start_datetime",
+          "end_datetime",
+          "process_after"
+        ],
+        "title": "Body_read_items_items__item_id__put"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -94,46 +106,6 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
-      },
-      "Item": {
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description"
-          },
-          "price": {
-            "type": "number",
-            "title": "Price"
-          },
-          "tax": {
-            "anyOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Tax"
-          }
-        },
-        "type": "object",
-        "required": [
-          "name",
-          "price"
-        ],
-        "title": "Item"
       },
       "ValidationError": {
         "properties": {
