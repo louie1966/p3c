@@ -7,13 +7,13 @@
   "paths": {
     "/files/": {
       "post": {
-        "summary": "Create Files",
-        "operationId": "create_files_files__post",
+        "summary": "Create File",
+        "operationId": "create_file_files__post",
         "requestBody": {
           "content": {
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Body_create_files_files__post"
+                "$ref": "#/components/schemas/Body_create_file_files__post"
               }
             }
           },
@@ -35,58 +35,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/HTTPValidationError"
                 }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/uploadfiles/": {
-      "post": {
-        "summary": "Create Upload Files",
-        "operationId": "create_upload_files_uploadfiles__post",
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "$ref": "#/components/schemas/Body_create_upload_files_uploadfiles__post"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/": {
-      "get": {
-        "summary": "Main",
-        "operationId": "main__get",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
               }
             }
           }
@@ -96,41 +44,30 @@
   },
   "components": {
     "schemas": {
-      "Body_create_files_files__post": {
+      "Body_create_file_files__post": {
         "properties": {
-          "files": {
-            "items": {
-              "type": "string",
-              "format": "binary"
-            },
-            "type": "array",
-            "title": "Files",
-            "description": "Multiple files as bytes"
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File"
+          },
+          "fileb": {
+            "type": "string",
+            "format": "binary",
+            "title": "Fileb"
+          },
+          "token": {
+            "type": "string",
+            "title": "Token"
           }
         },
         "type": "object",
         "required": [
-          "files"
+          "file",
+          "fileb",
+          "token"
         ],
-        "title": "Body_create_files_files__post"
-      },
-      "Body_create_upload_files_uploadfiles__post": {
-        "properties": {
-          "files": {
-            "items": {
-              "type": "string",
-              "format": "binary"
-            },
-            "type": "array",
-            "title": "Files",
-            "description": "Multiple files as UploadFile"
-          }
-        },
-        "type": "object",
-        "required": [
-          "files"
-        ],
-        "title": "Body_create_upload_files_uploadfiles__post"
+        "title": "Body_create_file_files__post"
       },
       "HTTPValidationError": {
         "properties": {
