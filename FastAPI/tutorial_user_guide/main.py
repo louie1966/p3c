@@ -6,16 +6,12 @@ app = FastAPI()
 
 
 @app.post("/files/")
-async def create_file(file: Annotated[bytes | None, File()] = None):
-    if not file:
-        return {"message": "No file sent"}
-    else:
-        return {"file_size": len(file)}
+async def create_file(file: Annotated[bytes, File(description="A file read as bytes")]):
+    return {"file_size": len(file)}
 
 
 @app.post("/uploadfile/")
-async def create_upload_file(file: UploadFile | None = None):
-    if not file:
-        return {"message": "No upload file sent"}
-    else:
-        return {"filename": file.filename}
+async def create_upload_file(
+    file: Annotated[UploadFile, File(description="A file read as UploadFile")],
+):
+    return {"filename": file.filename}
