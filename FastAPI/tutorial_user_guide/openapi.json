@@ -25,7 +25,15 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Item"
+                "$ref": "#/components/schemas/Item",
+                "examples": [
+                  {
+                    "name": "Foo",
+                    "description": "A very nice Item",
+                    "price": 35.4,
+                    "tax": 3.2
+                  }
+                ]
               }
             }
           }
@@ -72,10 +80,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "title": "Name",
-            "examples": [
-              "Foo"
-            ]
+            "title": "Name"
           },
           "description": {
             "anyOf": [
@@ -86,17 +91,11 @@
                 "type": "null"
               }
             ],
-            "title": "Description",
-            "examples": [
-              "A very nice Item"
-            ]
+            "title": "Description"
           },
           "price": {
             "type": "number",
-            "title": "Price",
-            "examples": [
-              35.4
-            ]
+            "title": "Price"
           },
           "tax": {
             "anyOf": [
@@ -107,10 +106,7 @@
                 "type": "null"
               }
             ],
-            "title": "Tax",
-            "examples": [
-              3.2
-            ]
+            "title": "Tax"
           }
         },
         "type": "object",
