@@ -5,10 +5,10 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/{item_id}": {
+    "/items-header/{item_id}": {
       "get": {
-        "summary": "Read Item",
-        "operationId": "read_item_items__item_id__get",
+        "summary": "Read Item Header",
+        "operationId": "read_item_header_items_header__item_id__get",
         "parameters": [
           {
             "name": "item_id",
