@@ -5,21 +5,20 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/{item_id}": {
-      "get": {
-        "summary": "Read Item",
-        "operationId": "read_item_items__item_id__get",
-        "parameters": [
-          {
-            "name": "item_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "title": "Item Id"
+    "/items/": {
+      "post": {
+        "summary": "Create Item",
+        "operationId": "create_item_items__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -57,6 +56,24 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "Item": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "size": {
+            "type": "integer",
+            "title": "Size"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "size"
+        ],
+        "title": "Item"
       },
       "ValidationError": {
         "properties": {
