@@ -130,15 +130,19 @@
             "title": "Tags",
             "default": []
           },
-          "image": {
+          "images": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/Image"
+                "items": {
+                  "$ref": "#/components/schemas/Image"
+                },
+                "type": "array"
               },
               {
                 "type": "null"
               }
-            ]
+            ],
+            "title": "Images"
           }
         },
         "type": "object",
