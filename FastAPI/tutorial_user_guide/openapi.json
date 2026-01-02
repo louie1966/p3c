@@ -11,19 +11,22 @@
         "operationId": "read_items_items__get",
         "parameters": [
           {
-            "name": "strange_header",
+            "name": "x-token",
             "in": "header",
             "required": false,
             "schema": {
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 {
                   "type": "null"
                 }
               ],
-              "title": "Strange Header"
+              "title": "X-Token"
             }
           }
         ],
