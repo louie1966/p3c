@@ -1,17 +1,15 @@
 from typing import Annotated
 
-from fastapi import FastAPI, Form
-from pydantic import BaseModel
+from fastapi import FastAPI, File, UploadFile
 
 app = FastAPI()
 
 
-class FormData(BaseModel):
-    username: str
-    password: str
-    model_config = {"extra": "forbid"}
+@app.post("/files/")
+async def create_file(file: Annotated[bytes, File()]):
+    return {"file_size": len(file)}
 
 
-@app.post("/login/")
-async def login(data: Annotated[FormData, Form()]):
-    return data
+@app.post("/uploadfile/")
+async def create_upload_file(file: UploadFile):
+    return {"filename": file.filename}

@@ -5,15 +5,51 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/login/": {
+    "/files/": {
       "post": {
-        "summary": "Login",
-        "operationId": "login_login__post",
+        "summary": "Create File",
+        "operationId": "create_file_files__post",
         "requestBody": {
           "content": {
-            "application/x-www-form-urlencoded": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/FormData"
+                "$ref": "#/components/schemas/Body_create_file_files__post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/uploadfile/": {
+      "post": {
+        "summary": "Create Upload File",
+        "operationId": "create_upload_file_uploadfile__post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_create_upload_file_uploadfile__post"
               }
             }
           },
@@ -44,24 +80,33 @@
   },
   "components": {
     "schemas": {
-      "FormData": {
+      "Body_create_file_files__post": {
         "properties": {
-          "username": {
+          "file": {
             "type": "string",
-            "title": "Username"
-          },
-          "password": {
-            "type": "string",
-            "title": "Password"
+            "format": "binary",
+            "title": "File"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
-          "username",
-          "password"
+          "file"
         ],
-        "title": "FormData"
+        "title": "Body_create_file_files__post"
+      },
+      "Body_create_upload_file_uploadfile__post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_create_upload_file_uploadfile__post"
       },
       "HTTPValidationError": {
         "properties": {
