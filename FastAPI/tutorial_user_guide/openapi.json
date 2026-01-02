@@ -5,23 +5,22 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/": {
+    "/login/": {
       "post": {
-        "summary": "Create Item",
-        "operationId": "create_item_items__post",
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Name"
+        "summary": "Login",
+        "operationId": "login_login__post",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_login_login__post"
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
-          "201": {
+          "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
@@ -45,6 +44,24 @@
   },
   "components": {
     "schemas": {
+      "Body_login_login__post": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          }
+        },
+        "type": "object",
+        "required": [
+          "username",
+          "password"
+        ],
+        "title": "Body_login_login__post"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
