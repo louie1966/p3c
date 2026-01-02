@@ -104,7 +104,8 @@
               "format": "binary"
             },
             "type": "array",
-            "title": "Files"
+            "title": "Files",
+            "description": "Multiple files as bytes"
           }
         },
         "type": "object",
@@ -121,7 +122,8 @@
               "format": "binary"
             },
             "type": "array",
-            "title": "Files"
+            "title": "Files",
+            "description": "Multiple files as UploadFile"
           }
         },
         "type": "object",
