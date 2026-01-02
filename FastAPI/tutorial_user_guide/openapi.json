@@ -5,23 +5,30 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/index-weights/": {
-      "post": {
-        "summary": "Create Index Weights",
-        "operationId": "create_index_weights_index_weights__post",
+    "/items/{item_id}": {
+      "put": {
+        "summary": "Update Item",
+        "operationId": "update_item_items__item_id__put",
+        "parameters": [
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Item Id"
+            }
+          }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "additionalProperties": {
-                  "type": "number"
-                },
-                "type": "object",
-                "title": "Weights"
+                "$ref": "#/components/schemas/Item"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -60,6 +67,54 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "Item": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "price": {
+            "type": "number",
+            "title": "Price"
+          },
+          "tax": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tax"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "price"
+        ],
+        "title": "Item",
+        "examples": [
+          {
+            "description": "A very nice Item",
+            "name": "Foo",
+            "price": 35.4,
+            "tax": 3.2
+          }
+        ]
       },
       "ValidationError": {
         "properties": {
