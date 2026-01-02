@@ -5,32 +5,28 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/{item_id}": {
-      "put": {
+    "/items/": {
+      "get": {
         "summary": "Read Items",
-        "operationId": "read_items_items__item_id__put",
+        "operationId": "read_items_items__get",
         "parameters": [
           {
-            "name": "item_id",
-            "in": "path",
-            "required": true,
+            "name": "ads_id",
+            "in": "cookie",
+            "required": false,
             "schema": {
-              "type": "string",
-              "format": "uuid",
-              "title": "Item Id"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ads Id"
             }
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Body_read_items_items__item_id__put"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -56,44 +52,6 @@
   },
   "components": {
     "schemas": {
-      "Body_read_items_items__item_id__put": {
-        "properties": {
-          "start_datetime": {
-            "type": "string",
-            "format": "date-time",
-            "title": "Start Datetime"
-          },
-          "end_datetime": {
-            "type": "string",
-            "format": "date-time",
-            "title": "End Datetime"
-          },
-          "process_after": {
-            "type": "string",
-            "format": "duration",
-            "title": "Process After"
-          },
-          "repeat_at": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "time"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Repeat At"
-          }
-        },
-        "type": "object",
-        "required": [
-          "start_datetime",
-          "end_datetime",
-          "process_after"
-        ],
-        "title": "Body_read_items_items__item_id__put"
-      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
