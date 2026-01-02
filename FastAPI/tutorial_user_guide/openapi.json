@@ -5,19 +5,19 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/images/multiple/": {
+    "/index-weights/": {
       "post": {
-        "summary": "Create Multiple Images",
-        "operationId": "create_multiple_images_images_multiple__post",
+        "summary": "Create Index Weights",
+        "operationId": "create_index_weights_index_weights__post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "items": {
-                  "$ref": "#/components/schemas/Image"
+                "additionalProperties": {
+                  "type": "number"
                 },
-                "type": "array",
-                "title": "Images"
+                "type": "object",
+                "title": "Weights"
               }
             }
           },
@@ -60,27 +60,6 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
-      },
-      "Image": {
-        "properties": {
-          "url": {
-            "type": "string",
-            "maxLength": 2083,
-            "minLength": 1,
-            "format": "uri",
-            "title": "Url"
-          },
-          "name": {
-            "type": "string",
-            "title": "Name"
-          }
-        },
-        "type": "object",
-        "required": [
-          "url",
-          "name"
-        ],
-        "title": "Image"
       },
       "ValidationError": {
         "properties": {
