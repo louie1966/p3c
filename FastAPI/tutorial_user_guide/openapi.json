@@ -5,18 +5,45 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/{item_id}": {
+    "/items/": {
       "get": {
-        "summary": "Read Item",
-        "operationId": "read_item_items__item_id__get",
+        "summary": "Read Items",
+        "operationId": "read_items_items__get",
         "parameters": [
           {
-            "name": "item_id",
-            "in": "path",
-            "required": true,
+            "name": "q",
+            "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "title": "Item Id"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "Skip"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 100,
+              "title": "Limit"
             }
           }
         ],
@@ -25,9 +52,7 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Item"
-                }
+                "schema": {}
               }
             }
           },
@@ -42,39 +67,56 @@
             }
           }
         }
-      },
-      "patch": {
-        "summary": "Update Item",
-        "operationId": "update_item_items__item_id__patch",
+      }
+    },
+    "/users/": {
+      "get": {
+        "summary": "Read Users",
+        "operationId": "read_users_users__get",
         "parameters": [
           {
-            "name": "item_id",
-            "in": "path",
-            "required": true,
+            "name": "q",
+            "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "title": "Item Id"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Q"
+            }
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "Skip"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 100,
+              "title": "Limit"
             }
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Item"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Item"
-                }
+                "schema": {}
               }
             }
           },
@@ -106,58 +148,6 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
-      },
-      "Item": {
-        "properties": {
-          "name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Name"
-          },
-          "description": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Description"
-          },
-          "price": {
-            "anyOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Price"
-          },
-          "tax": {
-            "type": "number",
-            "title": "Tax",
-            "default": 10.5
-          },
-          "tags": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Tags",
-            "default": []
-          }
-        },
-        "type": "object",
-        "title": "Item"
       },
       "ValidationError": {
         "properties": {
