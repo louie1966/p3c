@@ -43,9 +43,9 @@
           }
         }
       },
-      "put": {
+      "patch": {
         "summary": "Update Item",
-        "operationId": "update_item_items__item_id__put",
+        "operationId": "update_item_items__item_id__patch",
         "parameters": [
           {
             "name": "item_id",
