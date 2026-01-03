@@ -22,7 +22,7 @@
         },
         "responses": {
           "200": {
-            "description": "Successful Response",
+            "description": "The created item",
             "content": {
               "application/json": {
                 "schema": {
