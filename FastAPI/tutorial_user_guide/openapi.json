@@ -5,73 +5,18 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/items/": {
+    "/items/{item_id}": {
       "get": {
-        "summary": "Read Items",
-        "operationId": "read_items_items__get",
+        "summary": "Get Item",
+        "operationId": "get_item_items__item_id__get",
         "parameters": [
           {
-            "name": "x-token",
-            "in": "header",
+            "name": "item_id",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "title": "X-Token"
-            }
-          },
-          {
-            "name": "x-key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "X-Key"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/users/": {
-      "get": {
-        "summary": "Read Users",
-        "operationId": "read_users_users__get",
-        "parameters": [
-          {
-            "name": "x-token",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "X-Token"
-            }
-          },
-          {
-            "name": "x-key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "X-Key"
+              "title": "Item Id"
             }
           }
         ],
