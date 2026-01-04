@@ -1,9 +1,8 @@
-from typing import Annotated
+from typing import Annotated, Any
 
 from fastapi import Depends, FastAPI
 
 app = FastAPI()
-
 
 fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
 
@@ -16,7 +15,7 @@ class CommonQueryParams:
 
 
 @app.get("/items/")
-async def read_items(commons: Annotated[CommonQueryParams, Depends(CommonQueryParams)]):
+async def read_items(commons: Annotated[Any, Depends(CommonQueryParams)]):
     response = {}
     if commons.q:
         response.update({"q": commons.q})
