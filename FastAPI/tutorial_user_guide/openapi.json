@@ -7,8 +7,8 @@
   "paths": {
     "/items/": {
       "get": {
-        "summary": "Read Items",
-        "operationId": "read_items_items__get",
+        "summary": "Read Query",
+        "operationId": "read_query_items__get",
         "parameters": [
           {
             "name": "q",
@@ -27,23 +27,19 @@
             }
           },
           {
-            "name": "skip",
-            "in": "query",
+            "name": "last_query",
+            "in": "cookie",
             "required": false,
             "schema": {
-              "type": "integer",
-              "default": 0,
-              "title": "Skip"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 100,
-              "title": "Limit"
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Last Query"
             }
           }
         ],
