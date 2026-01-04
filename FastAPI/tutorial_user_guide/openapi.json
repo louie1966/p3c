@@ -7,39 +7,25 @@
   "paths": {
     "/items/": {
       "get": {
-        "summary": "Read Query",
-        "operationId": "read_query_items__get",
+        "summary": "Read Items",
+        "operationId": "read_items_items__get",
         "parameters": [
           {
-            "name": "q",
-            "in": "query",
-            "required": false,
+            "name": "x-token",
+            "in": "header",
+            "required": true,
             "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Q"
+              "type": "string",
+              "title": "X-Token"
             }
           },
           {
-            "name": "last_query",
-            "in": "cookie",
-            "required": false,
+            "name": "x-key",
+            "in": "header",
+            "required": true,
             "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Last Query"
+              "type": "string",
+              "title": "X-Key"
             }
           }
         ],
