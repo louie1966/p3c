@@ -1,17 +1,13 @@
 from typing import Annotated
 
 from fastapi import Depends, FastAPI
+from fastapi.security import OAuth2PasswordBearer
 
 app = FastAPI()
 
-
-def get_username():
-    try:
-        yield "Rick"
-    finally:
-        print("Cleanup up before response is sent")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
-@app.get("/users/me")
-def get_user_me(username: Annotated[str, Depends(get_username, scope="function")]):
-    return username
+@app.get("/items/")
+async def read_items(token: Annotated[str, Depends(oauth2_scheme)]):
+    return {"token": token}
