@@ -14,4 +14,5 @@ def get_username():
 
 @app.get("/users/me")
 def get_user_me(username: Annotated[str, Depends(get_username, scope="function")]):
+
     return username
